@@ -25,7 +25,7 @@ public class CLIParser {
             formatter.printHelp("Blunt Sabre", options);
         }
 
-
+        
     }
 
     private static Options getOptions() {
@@ -44,7 +44,11 @@ public class CLIParser {
         Option useHeuristic = new Option("u", "heuristic", true, "Heuristic to be used");
         options.addOption(useHeuristic);
 
+        // Setting problem files folder
+        Option problemFileFolder = new Option("f", "problem-folder", true, "Problem file folder");
+
         options.addOption("h", "help", false, "Print this help message");
+
         return options;
     }
 }
