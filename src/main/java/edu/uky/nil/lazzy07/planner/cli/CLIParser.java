@@ -40,7 +40,7 @@ public class CLIParser {
         String cacheFolder = cmd.getOptionValue("cache-folder");
         String promptTemplateFolder = cmd.getOptionValue("prompt-template-folder");
 
-        return new ParsedCLIArgs(domainName,
+         return new ParsedCLIArgs(domainName,
                 promptVersion,
                 problemFolder,
                 heuristic,

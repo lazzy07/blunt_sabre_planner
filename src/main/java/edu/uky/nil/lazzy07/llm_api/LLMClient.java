@@ -3,9 +3,9 @@ package edu.uky.nil.lazzy07.llm_api;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public abstract class LLMClient {
-    private String model;
-    private String cacheFolder;
-    private String apiKey;
+    private final String model;
+    private final String cacheFolder;
+    private final String apiKey;
 
     public LLMClient(String model, String cacheFolder, String apiKey) {
         this.model = model;
@@ -24,6 +24,8 @@ public abstract class LLMClient {
     public String getApiKey() {
         return apiKey;
     }
+
+    public abstract void initialize();
 
     public abstract String respondText();
 
