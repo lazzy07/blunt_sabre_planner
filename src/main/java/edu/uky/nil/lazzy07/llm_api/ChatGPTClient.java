@@ -9,15 +9,13 @@ public class ChatGPTClient extends LLMClient {
 
     );
 
-    public ChatGPTClient(String model, String cacheFolder, String apiKey) {
-        super(model, cacheFolder, apiKey);
+    public ChatGPTClient(String cacheFolder) {
+        super("gpt-5-mini", cacheFolder);
     }
 
     @Override
     public void initialize() {
         isAPIKeyValid();
-
-
     }
 
     private void isAPIKeyValid(){

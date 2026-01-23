@@ -5,12 +5,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 public abstract class LLMClient {
     private final String model;
     private final String cacheFolder;
-    private final String apiKey;
 
-    public LLMClient(String model, String cacheFolder, String apiKey) {
+    public LLMClient(String model, String cacheFolder) {
         this.model = model;
         this.cacheFolder = cacheFolder;
-        this.apiKey = apiKey;
     }
 
     public String getModel() {
@@ -19,10 +17,6 @@ public abstract class LLMClient {
 
     public String getCacheFolder() {
         return cacheFolder;
-    }
-
-    public String getApiKey() {
-        return apiKey;
     }
 
     public abstract void initialize();
