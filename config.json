@@ -1,9 +1,15 @@
 {
   "domain": {
     "name": "deerhunter",
-    "folder": "problems/"
+    "file": "problems/deerhunter.txt"
   },
   "search": {
+    "type": {
+      "name": "breadth-first",
+      "config": {
+
+      }
+    },
     "cost": {
       "type": "none",
       "config": {

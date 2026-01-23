@@ -47,6 +47,13 @@
       <version>2.21.0</version>
       <scope>compile</scope>
     </dependency>
+    <!-- Source: https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.21</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -84,7 +91,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.14.1</version>
         <configuration>
-          <release>15</release>
+          <release>16</release>
         </configuration>
       </plugin>
     </plugins>
