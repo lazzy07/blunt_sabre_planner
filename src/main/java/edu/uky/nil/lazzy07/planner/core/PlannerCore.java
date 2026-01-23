@@ -42,6 +42,7 @@ public class PlannerCore {
             this.search = (ProgressionSearch) session.getSearch();
             try {
                 this.treeMap = getProgressionTreeMap(search);
+                System.out.println("Initial progression tree created");
                 this.llmModel = this.getLLMModel();
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 throw new RuntimeException(e);
@@ -67,6 +68,7 @@ public class PlannerCore {
     private LLMClient getLLMModel(){
         switch(this.plannerConfig.getLlmModel()){
             case "gpt-5-mini":
+                System.out.println("LLM Model is set to: " + this.plannerConfig.getLlmModel());
                 return new ChatGPTClient(this.plannerConfig.getCacheFolder());
             default:
                 return null;
