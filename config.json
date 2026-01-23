@@ -1,0 +1,33 @@
+{
+  "domain": {
+    "name": "deerhunter",
+    "folder": "problems/"
+  },
+  "search": {
+    "cost": {
+      "type": "none",
+      "config": {
+
+      }
+    },
+    "plan": {
+      "max-length": 7,
+      "utility": 1
+    }
+  },
+  "llm": {
+    "prompt": {
+      "version": "v1.0",
+      "folder": "prompt-templates/",
+      "converter": "converter/deerhunter.jar"
+    },
+    "cache": {
+      "use-cache": true,
+      "folder": ".openai-cache/"
+    }
+  },
+  "output": {
+    "save-output": true,
+    "folder": "output/"
+  }
+}

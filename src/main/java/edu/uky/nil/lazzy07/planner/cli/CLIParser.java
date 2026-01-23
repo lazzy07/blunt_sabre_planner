@@ -3,7 +3,9 @@ package edu.uky.nil.lazzy07.planner.cli;
 import org.apache.commons.cli.*;
 
 public class CLIParser {
+    private boolean isConfigFileMode = false;
     private CommandLine cmd = null;
+
     public CLIParser(String[] args){
         Options options = getOptions();
 
@@ -19,6 +21,12 @@ public class CLIParser {
                 formatter.printHelp("blunt-sabre", options);
                 return;
             }
+
+            if(cmd.hasOption("b")){
+                System.out.println("Planner is running in config file mode...");
+                isConfigFileMode = true;
+            }
+
         } catch (ParseException e){
             System.out.println(e.getMessage());
             formatter.printHelp("Blunt Sabre", options);
@@ -28,6 +36,12 @@ public class CLIParser {
     public ParsedCLIArgs getParsedCLIArgs() throws ParseException {
         if(cmd == null){
             throw new ParseException("Error parsing cli arguments, planner stopped");
+        }
+
+        if(isConfigFileMode){
+            System.out.println("Configuration file parsing started");
+
+            System.out.println("Configuration file parsing is done");
         }
 
         String promptVersion = cmd.getOptionValue("prompt-version");
@@ -69,7 +83,6 @@ public class CLIParser {
 
         // Setting usage of heuristic (required)
         Option useHeuristic = new Option("e", "heuristic", true, "Heuristic to be used");
-        useHeuristic.setRequired(true);
         options.addOption(useHeuristic);
 
         // Setting problem files folder
@@ -78,12 +91,10 @@ public class CLIParser {
 
         // Setting the utility the planner needs to achieve (required)
         Option maxUtility = new Option("u", "max-utility", true, "Utility that the planner needs to achieve");
-        maxUtility.setRequired(true);
         options.addOption(maxUtility);
 
         // Max plan length until the planner give up
         Option maxPlanLength = new Option("l", "max-plan-length", true, "Max plan length until the planner give up");
-        maxPlanLength.setRequired(true);
         options.addOption(maxPlanLength);
 
         Option llmModel = new Option("m", "llm-model", true, "Selected llm Model - default: chatgpt-5-mini");
@@ -94,6 +105,9 @@ public class CLIParser {
 
         Option promptTemplateFolder = new Option("t", "prompt-template-folder", true, "Prompt template folder - default: prompt_templates/");
         options.addOption(promptTemplateFolder);
+
+        Option configFile = new Option("b", "config-file", true, "Configuration file for the planner");
+        options.addOption(configFile);
 
         return options;
     }
